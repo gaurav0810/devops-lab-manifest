@@ -1,0 +1,38 @@
+# File: deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: restapp-deployment
+  labels:
+    app: restapp
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: restapp
+  template:
+    metadata:
+      labels:
+        app: restapp
+    spec:
+      containers:
+      - name: restappcontainer
+        image: 6945/restappimage
+        ports:
+        - containerPort: 8000
+---
+# Nodeport service to expose the application
+apiVersion: v1
+kind: Service
+metadata:
+  name: restapp-service
+  namespace: default
+spec:
+  selector:
+    app: restapp
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000 
+  type: NodePort
