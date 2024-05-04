@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: java-sb-container
-        image: 2023mt03187/gitci-sb-app
+        image: 2023mt03187/java-sb-app
         ports:
         - containerPort: 8000
 ---
