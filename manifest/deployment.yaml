@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: restapp-deployment
+  name: java-sb-deployment
   labels:
     app: restapp
   namespace: default
@@ -17,8 +17,8 @@ spec:
         app: restapp
     spec:
       containers:
-      - name: restappcontainer
-        image: 6945/restappimage
+      - name: java-sb-container
+        image: 2023mt03187/gitci-sb-app
         ports:
         - containerPort: 8000
 ---
@@ -26,7 +26,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: restapp-service
+  name: java-sb-service
   namespace: default
 spec:
   selector:
