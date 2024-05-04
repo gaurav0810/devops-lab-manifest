@@ -4,17 +4,17 @@ kind: Deployment
 metadata:
   name: java-sb-deployment
   labels:
-    app: restapp
+    app: java-sb-app
   namespace: default
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: restapp
+      app: java-sb-app
   template:
     metadata:
       labels:
-        app: restapp
+        app: java-sb-app
     spec:
       containers:
       - name: java-sb-container
@@ -30,7 +30,7 @@ metadata:
   namespace: default
 spec:
   selector:
-    app: restapp
+    app: java-sb-app
   ports:
     - protocol: TCP
       port: 8000
